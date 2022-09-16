@@ -2,6 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:fl_discover_dashboard/core/platform/size_config.dart';
 import 'package:fl_discover_dashboard/core/platform/themes.dart';
 import 'package:fl_discover_dashboard/core/presentation/widgets/buttons/app_button.dart';
+import 'package:fl_discover_dashboard/features/add_item/presentation/add_hotel.dart';
+import 'package:fl_discover_dashboard/features/add_item/presentation/add_merchandise.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,13 +20,13 @@ class _CategoriesState extends State<Categories> {
     final _sc = SizeConfig(context: context);
     return Scaffold(
       appBar: AppBar(
-          leading: InkWell(
-            onTap: () => Navigator.of(context).pop(),
-            child: const Icon(
-              Icons.arrow_back,
-              color: AppColors.primaryColor,
-            ),
-          ),
+          // leading: InkWell(
+          //   onTap: () => Navigator.of(context).pop(),
+          //   child: const Icon(
+          //     Icons.arrow_back,
+          //     color: AppColors.primaryColor,
+          //   ),
+          // ),
           centerTitle: true,
           title: AutoSizeText(
             "Choose Category",
@@ -131,7 +133,12 @@ class _CategoriesState extends State<Categories> {
                             fontColor: Colors.white,
                             icon: const Icon(Icons.add),
                             label: 'Add to portal',
-                            onTap: () {}))
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (cxt) => const AddHotel()));
+                            }))
                   ]),
                 ),
               ),
@@ -204,7 +211,13 @@ class _CategoriesState extends State<Categories> {
                             fontColor: Colors.white,
                             icon: const Icon(Icons.add),
                             label: 'Add to portal',
-                            onTap: () {}))
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (cxt) =>
+                                          const AddMerchandise()));
+                            }))
                   ]),
                 ),
               ),

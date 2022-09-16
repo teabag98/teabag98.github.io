@@ -1,23 +1,22 @@
 import 'package:dio/dio.dart';
-import 'package:fl_discover_dashboard/core/platform/flavor_config.dart';
+import 'package:fl_discover_dashboard/core/data/network/config.dart';
 import 'package:fl_discover_dashboard/core/utilities/logging_utils.dart';
 
-import '../../utilities/data/guarded_datasource_calls.dart';
 import 'network_service.dart';
 
 class NetworkServiceImpl implements NetworkService {
   late Dio _dio;
 
   NetworkServiceImpl() {
-    final _options = BaseOptions(
+    final options = BaseOptions(
       headers: {
         'accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      baseUrl: FlavorConfig.instance.values.baseUrl,
+      baseUrl: /*FlavorConfig.instance.values.baseUrl*/ kStagingApiUrl,
     );
 
-    _dio = Dio(_options);
+    _dio = Dio(options);
     _dio.interceptors.add(
         InterceptorsWrapper(onRequest: (RequestOptions options, handler) async {
       options.headers.addAll({"X-Requested-With": "XMLHttpRequest"});

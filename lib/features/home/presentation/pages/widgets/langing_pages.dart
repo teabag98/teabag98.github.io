@@ -1,4 +1,5 @@
 import 'package:fl_discover_dashboard/features/home/presentation/pages/widgets/dashboard.dart';
+import 'package:fl_discover_dashboard/features/transactions/presentation/transactions.dart';
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatefulWidget {
@@ -15,16 +16,13 @@ class _LandingPageState extends State<LandingPage> {
       child: PageView(
         controller: widget.pageController,
         children: [
-          PageView(
-            children: [
-              Container(
-                color: Colors.white,
-                child: const Center(
-                  child: HomeDashboard(),
-                ),
-              )
-            ],
+          Container(
+            color: Colors.white,
+            child: const Center(
+              child: HomeDashboard(),
+            ),
           ),
+          const TransactionsDashboard(),
           Container(
             color: Colors.white,
             child: const Center(
@@ -38,34 +36,7 @@ class _LandingPageState extends State<LandingPage> {
             color: Colors.white,
             child: const Center(
               child: Text(
-                'Files',
-                style: TextStyle(fontSize: 35),
-              ),
-            ),
-          ),
-          Container(
-            color: Colors.white,
-            child: const Center(
-              child: Text(
                 'Download',
-                style: TextStyle(fontSize: 35),
-              ),
-            ),
-          ),
-          Container(
-            color: Colors.white,
-            child: const Center(
-              child: Text(
-                'Settings',
-                style: TextStyle(fontSize: 35),
-              ),
-            ),
-          ),
-          Container(
-            color: Colors.white,
-            child: const Center(
-              child: Text(
-                'Settings',
                 style: TextStyle(fontSize: 35),
               ),
             ),

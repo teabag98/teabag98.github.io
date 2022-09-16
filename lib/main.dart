@@ -1,19 +1,22 @@
-import 'package:fl_discover_dashboard/features/home/presentation/pages/home.dart';
+import 'package:fl_discover_dashboard/core/platform/locator.dart';
+import 'package:fl_discover_dashboard/features/authentication/presentation/signup.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  await GetStorage.init();
+  setup();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  MyApp({super.key});
+  final box = GetStorage();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Home(),
-      debugShowCheckedModeBanner: false,
-    );
+    return const GetMaterialApp(
+        debugShowCheckedModeBanner: false, home: SignUp());
   }
 }

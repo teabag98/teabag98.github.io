@@ -4,6 +4,7 @@ import 'package:fl_discover_dashboard/core/platform/themes.dart';
 import 'package:fl_discover_dashboard/features/home/presentation/pages/widgets/langing_pages.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -23,28 +24,17 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       title: 'Home',
       onTap: () => pageHorizontal.jumpToPage(0),
       icon: const Icon(Icons.home),
-      badgeContent: const Text(
-        '3',
-        style: TextStyle(color: Colors.white),
-      ),
     ),
     SideMenuItem(
-      // Priority of item to show on SideMenu, lower value is displayed at the top
       priority: 1,
-      title: 'Products',
+      title: 'Orders',
       onTap: () => pageHorizontal.jumpToPage(1),
-      icon: const Icon(Icons.ads_click),
-    ),
-    SideMenuItem(
-      priority: 2,
-      title: 'Transactions',
-      onTap: () => pageHorizontal.jumpToPage(2),
       icon: const Icon(Icons.wallet),
     ),
     SideMenuItem(
-      priority: 3,
+      priority: 2,
       title: 'Notifications',
-      onTap: () => pageHorizontal.jumpToPage(3),
+      onTap: () => pageHorizontal.jumpToPage(2),
       icon: const Icon(Icons.notifications),
       badgeContent: const Text(
         '3',
@@ -52,30 +42,26 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       ),
     ),
     SideMenuItem(
-      priority: 4,
+      priority: 3,
       title: 'Reports',
-      onTap: () => pageHorizontal.jumpToPage(4),
+      onTap: () => pageHorizontal.jumpToPage(3),
       icon: const Icon(Icons.receipt_long_sharp),
     ),
-    // SideMenuItem(
-    //   priority: 6,
-    //   title: 'Add product',
-    //   onTap: () => pageHorizontal.jumpToPage(5),
-    //   icon: const Icon(Icons.add_box_rounded),
-    // ),
     SideMenuItem(
-      priority: 6,
+      priority: 4,
       title: 'Settings',
-      onTap: () => pageHorizontal.jumpToPage(6),
+      onTap: () => pageHorizontal.jumpToPage(4),
       icon: const Icon(Icons.settings),
     ),
     SideMenuItem(
-      priority: 7,
-      title: 'Exit',
+      priority: 6,
+      title: 'Logout',
       onTap: () {},
       icon: const Icon(Icons.exit_to_app),
     ),
   ];
+
+  final box = GetStorage();
 
   @override
   void initState() {
@@ -85,12 +71,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     )..addListener(() {
         setState(() {});
       });
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final _sc = SizeConfig(context: context);
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -118,9 +106,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           children: [
             SideMenu(
               controller: pageHorizontal,
-              // onDisplayModeChanged: (mode) {
-              //   print(mode);
-              // },
               style: SideMenuStyle(
                 decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(50))),
@@ -136,7 +121,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   DrawerHeader(child: Container()),
                 ],
               ),
-
               items: items,
             ),
             const VerticalDivider(),

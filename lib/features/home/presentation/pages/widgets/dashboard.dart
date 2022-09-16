@@ -3,8 +3,12 @@ import 'package:fl_discover_dashboard/core/platform/size_config.dart';
 import 'package:fl_discover_dashboard/core/platform/themes.dart';
 import 'package:fl_discover_dashboard/core/presentation/widgets/buttons/app_button.dart';
 import 'package:fl_discover_dashboard/core/presentation/widgets/flickering.dart';
+import 'package:fl_discover_dashboard/features/authentication/presentation/signup.dart';
 import 'package:fl_discover_dashboard/features/categories/presentation/categories.dart';
+import 'package:fl_discover_dashboard/features/products/presentation/products_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeDashboard extends StatefulWidget {
@@ -22,6 +26,7 @@ class _HomeDashboardState extends State<HomeDashboard> {
   @override
   Widget build(BuildContext context) {
     final _sc = SizeConfig(context: context);
+
     return Expanded(
         flex: 5,
         child: SingleChildScrollView(
@@ -34,20 +39,12 @@ class _HomeDashboardState extends State<HomeDashboard> {
                 height: _sc.heightScaledSize(40),
               ),
               SizedBox(
-                width: _sc.screenWidth * 0.7,
-                child: AutoSizeText(
-                  "Qinsley LTD",
-                  textAlign: TextAlign.start,
-                  style: GoogleFonts.alata(fontSize: 30, color: Colors.black),
-                ),
-              ),
-              SizedBox(
                 height: _sc.heightScaledSize(40),
               ),
               SizedBox(
                 width: _sc.screenWidth * 0.7,
                 child: AutoSizeText(
-                  "Good Morning eric ,",
+                  "Good Morning ",
                   textAlign: TextAlign.start,
                   style: GoogleFonts.alata(fontSize: 25, color: Colors.black),
                 ),
@@ -197,7 +194,9 @@ class _HomeDashboardState extends State<HomeDashboard> {
                                 fontColor: Colors.white,
                                 icon: const Icon(Icons.add),
                                 label: 'View',
-                                onTap: () {}))
+                                onTap: () {
+                                  Get.to(const ProductsView());
+                                }))
                       ]),
                     ),
                   ),
@@ -276,7 +275,9 @@ class _HomeDashboardState extends State<HomeDashboard> {
                                 fontColor: Colors.white,
                                 icon: const Icon(Icons.add),
                                 label: 'Edit Profile',
-                                onTap: () {})),
+                                onTap: () {
+                                  Get.to(const SignUp());
+                                })),
                         const Positioned(
                             top: 0, right: 0, child: CustomFlicker())
                       ]),
@@ -292,3 +293,6 @@ class _HomeDashboardState extends State<HomeDashboard> {
         ));
   }
 }
+
+  // });
+
